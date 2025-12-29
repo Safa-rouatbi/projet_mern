@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import api from "../services/api";
 import useAuthStore from "../store/authStore";
 import Header from "../components/Header";
+import styles from "./BookAppointment.module.css"
 
 export default function BookAppointment() {
   const token = useAuthStore((state) => state.token);
@@ -90,6 +91,7 @@ export default function BookAppointment() {
   };
 
   return (
+    <div className={styles.page}>
     <div>
       <Header />
       <div className="container">
@@ -179,6 +181,7 @@ export default function BookAppointment() {
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import api from "../services/api";
 import useAuthStore from "../store/authStore";
 import Header from "../components/Header";
+import styles from "./ClientDashboard.module.css";
 
 export default function ClientDashboard() {
   const [appointments, setAppointments] = useState([]);
@@ -50,33 +51,36 @@ export default function ClientDashboard() {
     return (
       <div>
         <Header />
-        <div className="container">Chargement...</div>
+        <div className={styles.container}>Chargement...</div>
       </div>
     );
   }
 
   return (
+    <div className={styles.page}>
     <div>
       <Header />
-      <div className="container">
-        <h2>Mes rendez-vous</h2>
-
-        <button
-          className="btn-primary"
-          onClick={() => navigate("/book")}
-        >
-          Prendre un rendez-vous
-        </button>
-
+      <div className={styles.container}>
+        <div className={styles.headerWrapper}>
+  <h2>Mes rendez-vous</h2>
+  <button
+    className={styles["btn-primary"]}
+    onClick={() => navigate("/book")}
+  >
+    Prendre un rendez-vous
+  </button>
+</div>
         {appointments.length === 0 ? (
-          <p className="empty-state">Aucun rendez-vous</p>
+          <p className={styles["empty-state"]}>Aucun rendez-vous</p>
         ) : (
-          <div className="appointments-list">
+          <div className={styles["appointments-list"]}>
             {appointments.map((a) => (
-              <div key={a._id} className="appointment-card">
-                <div className="appointment-header">
+              <div key={a._id} className={styles["appointment-card"]}>
+                <div className={styles["appointment-header"]}>
                   <h3>{a.service?.title || "Service"}</h3>
-                  <span className={`status status-${a.status}`}>
+                  <span
+                    className={`${styles.status} ${styles[`status-${a.status}`]}`}
+                  >
                     {a.status}
                   </span>
                 </div>
@@ -84,7 +88,8 @@ export default function ClientDashboard() {
                   <strong>Provider:</strong> {a.provider?.name}
                 </p>
                 <p>
-                  <strong>Date:</strong> {new Date(a.date).toLocaleString("fr-FR")}
+                  <strong>Date:</strong>{" "}
+                  {new Date(a.date).toLocaleString("fr-FR")}
                 </p>
                 {a.service && (
                   <p>
@@ -96,10 +101,10 @@ export default function ClientDashboard() {
                     <strong>Notes:</strong> {a.notes}
                   </p>
                 )}
-                <div className="card-actions">
+                <div className={styles["card-actions"]}>
                   {a.status !== "cancelled" && (
                     <button
-                      className="btn-danger"
+                      className={styles["btn-danger"]}
                       onClick={() => handleCancel(a._id)}
                     >
                       Annuler
@@ -108,7 +113,7 @@ export default function ClientDashboard() {
                   {a.provider?._id && (
                     <Link
                       to={`/reviews/${a.provider._id}`}
-                      className="btn-secondary"
+                      className={styles["btn-secondary"]}
                       style={{ textDecoration: "none", display: "inline-block" }}
                     >
                       Voir les avis
@@ -120,6 +125,7 @@ export default function ClientDashboard() {
           </div>
         )}
       </div>
+    </div>
     </div>
   );
 }

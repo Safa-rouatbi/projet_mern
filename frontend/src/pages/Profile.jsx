@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 import useAuthStore from "../store/authStore";
 import Header from "../components/Header";
+import styles from "./Profile.module.css"
 
 export default function Profile() {
   const [profile, setProfile] = useState(null);
@@ -89,6 +90,7 @@ export default function Profile() {
   }
 
   return (
+    
     <div>
       <Header />
       <div className="container">

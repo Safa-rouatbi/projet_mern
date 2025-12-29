@@ -1,0 +1,11 @@
+.page {
+  min-height: 100vh;
+  background-image: url("../assets/backg.jpg");
+  background-size: cover;        /* couvre toute la page */
+  background-position: center;   /* centre l'image */
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

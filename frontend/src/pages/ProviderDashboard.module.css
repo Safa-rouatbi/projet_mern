@@ -1,0 +1,145 @@
+.page {
+  min-height: 100vh;
+  background-image: url("../assets/dashboard.jpg"); /* image de fond */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Wrapper pour le titre et bouton */
+.headerWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Titre */
+.container h2 {
+  color: #333;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+/* Boutons */
+.btn-primary, .btn-secondary, .btn-danger {
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #5156b4;
+  color: #f5efef;
+  padding: 0.6rem 1.2rem;
+}
+
+.btn-primary:hover {
+  background-color: #3b3fb0;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: #eee;
+  color: #333;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background-color: #ddd;
+  transform: translateY(-1px);
+}
+
+.btn-danger {
+  background-color: #b12212;
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.btn-danger:hover {
+  background-color: #e61902;
+  transform: translateY(-1px);
+}
+
+.appointments-list {
+  display: flex;
+  flex-wrap: wrap;       /* permet aux cartes de revenir à la ligne */
+  gap: 1rem;             /* espace entre les cartes */
+  width: 100%;
+  margin: 0;
+  padding: 0 1rem;       /* petit padding horizontal */
+  box-sizing: border-box;
+}
+
+.appointment-card {
+  flex: 1 1 300px;       /* largeur flexible, min 300px */
+  background-color: rgba(211, 204, 204, 0.65);
+  padding: 1.5rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 153, 241, 0.6);
+  box-shadow: 0 0 10px rgba(81, 86, 180, 0.4),
+              0 0 30px rgba(81, 86, 180, 0.2);
+  min-height: 150px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+
+
+
+.appointment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Header de la carte */
+.appointment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Status */
+.status {
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: white;
+  text-transform: capitalize;
+}
+
+.status-scheduled { background-color: #797597; }
+.status-completed { background-color: #2ecc71; }
+.status-cancelled { background-color: #b12212; }
+
+/* Infos carte */
+.appointment-card p {
+  margin: 0.4rem 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Message vide */
+.empty-state {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  margin-top: 2rem;
+}

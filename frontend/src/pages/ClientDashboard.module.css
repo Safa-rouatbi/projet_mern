@@ -1,0 +1,167 @@
+/* Container global */
+.page {
+  min-height: 100vh;                     /* prend toute la hauteur de la page */
+  background-image: url("../assets/dashboard.jpg"); /* chemin vers ton image dans assets */
+  background-size: cover;                /* couvre toute la page */
+  background-position: center;           /* centre l’image */
+  background-repeat: no-repeat;          /* pas de répétition */
+  display: flex;
+  flex-direction: column;                /* header + container en colonne */
+}
+
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+}
+
+/* Wrapper pour le titre et le bouton */
+.headerWrapper {
+  display: flex;
+  justify-content: space-between; /* titre à gauche, bouton à droite */
+  align-items: center;            /* verticalement centré */
+  margin-bottom: 1.5rem;          /* espace sous la ligne */
+}
+
+/* Titre de la page */
+.container h2 {
+  color: #333;
+  font-size: 1.8rem;
+  margin: 0; /* retiré margin-bottom, géré par headerWrapper */
+}
+
+/* Bouton principal */
+.btn-primary {
+  display: inline-block;
+  background-color: #5156b4;
+  color: #f5efef;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #3b3fb0;
+  transform: translateY(-2px);
+}
+
+/* Bouton secondaire (link) */
+.btn-secondary {
+  background-color: #eee;
+  color: #333;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #ddd;
+  transform: translateY(-1px);
+}
+
+/* Bouton danger (annuler) */
+.btn-danger {
+  background-color: #b12212;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-danger:hover {
+  background-color: #e61902;
+  transform: translateY(-1px);
+}
+
+/* Liste des rendez-vous */
+.appointments-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+/* Carte rendez-vous */
+.appointment-card {
+  background-color: #d3cccca6;
+  padding: 1.2rem 1rem;
+  border-radius: 12px;                     /* coins arrondis plus modernes */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* ombre douce */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(148, 153, 241, 0.6);
+  box-shadow:
+    0 0 10px rgba(81, 86, 180, 0.4),
+    0 0 30px rgba(81, 86, 180, 0.2);
+}
+
+.appointment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Header de la carte */
+.appointment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Status des rendez-vous */
+.status {
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  text-transform: capitalize;
+  font-weight: 500;
+  color: white;
+}
+
+/* Couleurs selon le status */
+.status-scheduled {
+  background-color: #797597; /* bleu clair */
+}
+
+.status-completed {
+  background-color: #2ecc71; /* vert */
+}
+
+.status-cancelled {
+  background-color: #b12212; /* rouge */
+}
+
+/* Infos dans la carte */
+.appointment-card p {
+  margin: 0.4rem 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Actions des cartes */
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* Message vide */
+.empty-state {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  margin-top: 2rem;
+}

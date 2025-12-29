@@ -37,7 +37,7 @@ body {
 }
 
 .nav-left h3 {
-  color: #646cff;
+  color: #555896;
   margin: 0;
 }
 
@@ -82,78 +82,11 @@ body {
   padding: 0 1rem;
 }
 
-/* Auth Pages */
-.auth-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f5f5f5;
-}
 
-.auth-form {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-}
-
-.auth-form h2 {
-  margin-bottom: 1.5rem;
-  text-align: center;
-  color: #333;
-}
-
-.auth-form input,
-.auth-form select {
-  width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-.auth-form button {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: #646cff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-bottom: 1rem;
-}
-
-.auth-form button:hover {
-  background-color: #535bf2;
-}
-
-.auth-form p {
-  text-align: center;
-  margin-top: 1rem;
-}
-
-.auth-form a {
-  color: #646cff;
-  text-decoration: none;
-}
-
-.error {
-  background-color: #fee;
-  color: #c33;
-  padding: 0.75rem;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-  border: 1px solid #fcc;
-}
 
 /* Buttons */
 .btn-primary {
-  background-color: #646cff;
+  background-color: #585ca0;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -164,11 +97,11 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: #535bf2;
+  background-color: #3b409c;
 }
 
 .btn-secondary {
-  background-color: #6c757d;
+  background-color: #575b80;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -182,7 +115,7 @@ body {
 }
 
 .btn-danger {
-  background-color: #dc3545;
+  background-color: #aa1221;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -197,11 +130,16 @@ body {
 
 /* Forms */
 .form-card {
-  background: white;
+  background: rgba(211, 204, 204, 0.363); /* blanc avec transparence */
   padding: 2rem;
-  border-radius: 8px;
+  border-radius: 10px;
+  width: 100%;
+
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
+  border: 1px solid rgba(81, 86, 180, 0.6);
+  box-shadow:
+    0 0 10px rgba(81, 86, 180, 0.4),
+    0 0 30px rgba(81, 86, 180, 0.2);
 }
 
 .form-card h3 {
@@ -247,11 +185,15 @@ body {
 .service-card,
 .profile-card,
 .review-card {
-  background: white;
+  background: rgba(206, 200, 200, 0.644);
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 153, 241, 0.6);
+  box-shadow: 0 0 10px rgba(81, 86, 180, 0.4),
+              0 0 30px rgba(81, 86, 180, 0.2);
 }
 
 .appointment-header {
@@ -273,15 +215,6 @@ body {
   font-weight: 500;
 }
 
-.status-pending {
-  background-color: #fff3cd;
-  color: #856404;
-}
-
-.status-confirmed {
-  background-color: #d4edda;
-  color: #155724;
-}
 
 .status-cancelled {
   background-color: #f8d7da;
@@ -321,14 +254,7 @@ body {
   margin-top: 1rem;
 }
 
-/* Profile */
-.avatar {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
-}
+
 
 /* Reviews */
 .review-header {
@@ -383,26 +309,6 @@ body {
 }
 
 .link-reviews:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .nav {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .nav-right {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .form-actions {
-    flex-direction: column;
-  }
-
-  .card-actions {
-    flex-direction: column;
-  }
-}

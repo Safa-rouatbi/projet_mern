@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import api from "../services/api";
 import useAuthStore from "../store/authStore";
 import Header from "../components/Header";
+import styles from "./ProviderDashboard.module.css"; // CSS Module
 
 export default function ProviderDashboard() {
   const [appointments, setAppointments] = useState([]);
@@ -48,40 +49,40 @@ export default function ProviderDashboard() {
 
   if (loading) {
     return (
-      <div>
+      <div className={styles.page}>
         <Header />
-        <div className="container">Chargement...</div>
+        <div className={styles.container}>Chargement...</div>
       </div>
     );
   }
 
   return (
-    <div>
+    <div className={styles.page}>
       <Header />
-      <div className="container">
-        <h2>Mes rendez-vous</h2>
-
-        {(user?.id || user?._id) && (
-          <div className="provider-stats">
+      <div className={styles.container}>
+        <div className={styles.headerWrapper}>
+          <h2>Mes rendez-vous</h2>
+          {(user?.id || user?._id) && (
             <Link
               to={`/reviews/${user.id || user._id}`}
-              className="btn-secondary"
-              style={{ textDecoration: "none", display: "inline-block" }}
+              className={styles["btn-secondary"]}
             >
               Voir mes avis ({reviews.length})
             </Link>
-          </div>
-        )}
+          )}
+        </div>
 
         {appointments.length === 0 ? (
-          <p className="empty-state">Aucun rendez-vous</p>
+          <p className={styles["empty-state"]}>Aucun rendez-vous</p>
         ) : (
-          <div className="appointments-list">
+          <div className={styles["appointments-list"]}>
             {appointments.map((a) => (
-              <div key={a._id} className="appointment-card">
-                <div className="appointment-header">
+              <div key={a._id} className={styles["appointment-card"]}>
+                <div className={styles["appointment-header"]}>
                   <h3>{a.service?.title || "Service"}</h3>
-                  <span className={`status status-${a.status}`}>
+                  <span
+                    className={`${styles.status} ${styles[`status-${a.status}`]}`}
+                  >
                     {a.status}
                   </span>
                 </div>
@@ -92,7 +93,8 @@ export default function ProviderDashboard() {
                   <strong>Email:</strong> {a.client?.email}
                 </p>
                 <p>
-                  <strong>Date:</strong> {new Date(a.date).toLocaleString("fr-FR")}
+                  <strong>Date:</strong>{" "}
+                  {new Date(a.date).toLocaleString("fr-FR")}
                 </p>
                 {a.service && (
                   <p>

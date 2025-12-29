@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 import useAuthStore from "../store/authStore";
+import styles from "./Register.module.css";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -38,11 +39,11 @@ export default function Register() {
   };
 
   return (
-    <div className="auth-container">
-      <form onSubmit={handleSubmit} className="auth-form">
+    <div className={styles.page}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <h2>Inscription</h2>
 
-        {error && <div className="error">{error}</div>}
+        {error && <div className={styles.error}>{error}</div>}
 
         <input
           type="text"

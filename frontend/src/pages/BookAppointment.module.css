@@ -1,0 +1,9 @@
+.page {
+  min-height: 100vh;                     /* prend toute la hauteur de la page */
+  background-image: url("../assets/dashboard.jpg"); /* chemin vers ton image dans assets */
+  background-size: cover;                /* couvre toute la page */
+  background-position: center;           /* centre l’image */
+  background-repeat: no-repeat;          /* pas de répétition */
+  display: flex;
+  flex-direction: column;                /* header + container en colonne */
+}

@@ -17,7 +17,7 @@ export default function Header() {
       <nav className="nav">
         <div className="nav-left">
           <Link to={user.role === "client" ? "/client" : "/provider"}>
-            <h3>RDV App</h3>
+            <h3>BookMyTime</h3>
           </Link>
         </div>
 

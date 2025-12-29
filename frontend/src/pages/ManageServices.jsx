@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 import useAuthStore from "../store/authStore";
 import Header from "../components/Header";
+import styles from "./ManageServices.module.css"
+
 
 export default function ManageServices() {
   const [services, setServices] = useState([]);
@@ -101,6 +103,7 @@ export default function ManageServices() {
   }
 
   return (
+     <div className={styles.page}>
     <div>
       <Header />
       <div className="container">
@@ -203,6 +206,7 @@ export default function ManageServices() {
           </div>
         )}
       </div>
+    </div>
     </div>
   );
 }
