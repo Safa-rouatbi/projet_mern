@@ -6,43 +6,60 @@ import useAuthStore from "../store/authStore";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const login = useAuthStore((state) => state.login);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
-    const res = await api.post("/auth/login", { email, password });
+    try {
+      const res = await api.post("/auth/login", { email, password });
 
-    login(res.data);
+      login(res.data);
 
-    if (res.data.user.role === "client") {
-      navigate("/client");
-    } else {
-      navigate("/provider");
+      if (res.data.user.role === "client") {
+        navigate("/client");
+      } else {
+        navigate("/provider");
+      }
+    } catch (err) {
+      setError(err.response?.data?.error || "Erreur de connexion");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
+    <div className="auth-container">
+      <form onSubmit={handleSubmit} className="auth-form">
+        <h2>Connexion</h2>
 
-      <input
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+        {error && <div className="error">{error}</div>}
 
-      <input
-        type="password"
-        placeholder="Mot de passe"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
 
-      <button>Connexion</button>
-    </form>
+        <input
+          type="password"
+          placeholder="Mot de passe"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+
+        <button type="submit">Connexion</button>
+
+        <p>
+          Pas de compte ? <a href="/register">S'inscrire</a>
+        </p>
+      </form>
+    </div>
   );
 }
 

@@ -37,7 +37,7 @@ async function getProviderReviews(req, res) {
   try {
     const reviews = await Review.find({
       provider: req.params.providerId
-    }).populate("client", "name");
+    }).populate("client", "name _id");
 
     res.json(reviews);
 
@@ -46,7 +46,85 @@ async function getProviderReviews(req, res) {
   }
 }
 
+// UPDATE REVIEW
+async function updateReview(req, res) {
+  try {
+    // seul un client peut modifier un avis
+    if (req.user.role !== "client") {
+      return res.status(403).json({
+        error: "Seul un client peut modifier un avis"
+      });
+    }
+
+    const { rating, comment } = req.body;
+    const reviewId = req.params.reviewId;
+
+    // Vérifier que l'avis existe et appartient au client connecté
+    const review = await Review.findById(reviewId);
+
+    if (!review) {
+      return res.status(404).json({
+        error: "Avis non trouvé"
+      });
+    }
+
+    if (review.client.toString() !== req.user.id) {
+      return res.status(403).json({
+        error: "Vous ne pouvez modifier que vos propres avis"
+      });
+    }
+
+    // Mettre à jour l'avis
+    review.rating = rating;
+    review.comment = comment;
+    await review.save();
+
+    res.json(review);
+
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+}
+
+// DELETE REVIEW
+async function deleteReview(req, res) {
+  try {
+    // seul un client peut supprimer un avis
+    if (req.user.role !== "client") {
+      return res.status(403).json({
+        error: "Seul un client peut supprimer un avis"
+      });
+    }
+
+    const reviewId = req.params.reviewId;
+
+    // Vérifier que l'avis existe et appartient au client connecté
+    const review = await Review.findById(reviewId);
+
+    if (!review) {
+      return res.status(404).json({
+        error: "Avis non trouvé"
+      });
+    }
+
+    if (review.client.toString() !== req.user.id) {
+      return res.status(403).json({
+        error: "Vous ne pouvez supprimer que vos propres avis"
+      });
+    }
+
+    await Review.findByIdAndDelete(reviewId);
+
+    res.json({ message: "Avis supprimé" });
+
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+}
+
 module.exports = {
   createReview,
-  getProviderReviews
+  getProviderReviews,
+  updateReview,
+  deleteReview
 };

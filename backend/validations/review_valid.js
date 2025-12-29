@@ -6,4 +6,9 @@ const reviewSchema = Joi.object({
   comment: Joi.string().allow("").optional()
 });
 
-module.exports = { reviewSchema };
+const updateReviewSchema = Joi.object({
+  rating: Joi.number().min(1).max(5).required(),
+  comment: Joi.string().allow("").optional()
+});
+
+module.exports = { reviewSchema, updateReviewSchema };

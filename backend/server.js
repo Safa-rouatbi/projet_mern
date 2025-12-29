@@ -12,7 +12,7 @@ app.use(cors({origin:process.env.CORS_ORIGIN ||'*'}));
 
 connectDB(process.env.MONGO_URI);
 app.use('/auth', require('./routes/authRoutes'));
-app.use("/api/profile", require("./routes/profileRoutes"));
+app.use("/profile", require("./routes/profileRoutes"));
 app.use("/appointments", require("./routes/appointmentRoutes"));
 app.use("/services", require("./routes/serviceRoutes"));
 app.use("/reviews", require("./routes/reviewRoutes"));

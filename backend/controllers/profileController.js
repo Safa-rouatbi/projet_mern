@@ -8,9 +8,12 @@ async function createProfile(req, res) {
       return res.status(400).json({ error: "Profil déjà créé." });
     }
 
+    // Exclure avatar lors de la création
+    const { avatar, ...profileData } = req.body;
+
     const profile = await Profile.create({
       user: req.user.id,
-      ...req.body
+      ...profileData
     });
   
     res.status(201).json(profile);
